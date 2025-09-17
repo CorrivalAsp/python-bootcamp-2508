@@ -1,8 +1,13 @@
-# Archivo: lab_01_validacion_solucion.py
+# Archivo: lab_01_validacion.py
 """
-Laboratorio 1: Validación de Datos con Excepciones (SOLUCIÓN)
+Laboratorio 1: Validación de Datos con Excepciones
 Objetivo: Practicar el manejo básico de excepciones implementando
 validaciones para datos de productos.
+
+La función debe:
+1. Validar el formato y rango de los datos
+2. Manejar diferentes tipos de errores
+3. Proporcionar mensajes de error descriptivos
 """
 
 def validar_producto(codigo, nombre, precio, stock):
@@ -19,42 +24,14 @@ def validar_producto(codigo, nombre, precio, stock):
         ValueError: Cuando los datos no cumplen con las validaciones
         TypeError: Cuando los tipos de datos son incorrectos
     """
-    # Validar tipos de datos
-    if not isinstance(codigo, str):
-        raise TypeError("El código debe ser una cadena de texto")
-    if not isinstance(nombre, str):
-        raise TypeError("El nombre debe ser una cadena de texto")
+    # TODO: Implementar validaciones siguiendo estos pasos:
+    # 1. Validar tipos de datos
+    # 2. Validar formato de código (alfanumérico)
+    # 3. Validar nombre no vacío
+    # 4. Validar precio positivo
+    # 5. Validar stock no negativo
     
-    # Convertir precio y stock a números si son string
-    try:
-        precio = float(precio)
-        stock = int(stock)
-    except (ValueError, TypeError):
-        raise TypeError("Precio debe ser un número decimal y stock un número entero")
-    
-    # Validar formato de código
-    if not codigo.isalnum():
-        raise ValueError("El código debe ser alfanumérico")
-    
-    # Validar nombre
-    if not nombre.strip():
-        raise ValueError("El nombre no puede estar vacío")
-    
-    # Validar precio
-    if precio <= 0:
-        raise ValueError("El precio debe ser mayor que 0")
-    
-    # Validar stock
-    if stock < 0:
-        raise ValueError("El stock no puede ser negativo")
-    
-    # Retornar datos validados
-    return {
-        "codigo": codigo,
-        "nombre": nombre,
-        "precio": precio,
-        "stock": stock
-    }
+    raise NotImplementedError("¡Función no implementada!")
 
 def main():
     # Casos de prueba
@@ -95,6 +72,8 @@ def main():
             print(f"Producto: {resultado}")
         except (ValueError, TypeError) as e:
             print(f"Error: {str(e)}")
+        except NotImplementedError as e:
+            print(f"Estado: {str(e)}")
 
 if __name__ == "__main__":
     main()
